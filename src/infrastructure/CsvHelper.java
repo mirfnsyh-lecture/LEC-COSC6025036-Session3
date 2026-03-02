@@ -9,6 +9,7 @@ import java.util.List;
 public class CsvHelper {
     private static final String CSV_PATH = "data/mahasiswa.csv";
 
+    // Read CSV dan return daftar Mahasiswa; skip baris header
     public List<Mahasiswa> readCSV() throws Exception {
         List<Mahasiswa> result = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(CSV_PATH))) {
@@ -24,6 +25,7 @@ public class CsvHelper {
                 line = line.trim();
                 if (line.isEmpty()) continue;
 
+                // Parsing setiap kolom: nama, nim, jurusan, ipk
                 String[] column = line.split(",");
                 if (column.length < 4) continue;
 
@@ -43,6 +45,7 @@ public class CsvHelper {
         return result;
     }
 
+    // Tulis ulang seluruh daftar mahasiswa ke CSV (timpa file lama)
     public void writeCSV(List<Mahasiswa> list) throws Exception {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CSV_PATH))) {
             bw.write("nama,nim,jurusan,ipk");

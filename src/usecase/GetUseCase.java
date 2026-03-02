@@ -6,6 +6,7 @@ import infrastructure.CsvHelper;
 import java.util.List;
 
 public class GetUseCase {
+    // Tampilkan semua mahasiswa tanpa status dan predikat
     public void getList() {
         try {
             List<Mahasiswa> mahasiswaList = new CsvHelper().readCSV();
@@ -22,6 +23,7 @@ public class GetUseCase {
         }
     }
 
+    // Tampilkan semua mahasiswa beserta status kelulusan dan predikat akademik
     public void getListWithPredicate() {
         try {
             List<Mahasiswa> mahasiswaList = new CsvHelper().readCSV();

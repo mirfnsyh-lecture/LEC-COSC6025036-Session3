@@ -11,6 +11,7 @@ public class UpdateUseCase {
         try {
             CsvHelper csvHelper = new CsvHelper();
 
+            // Baca seluruh data mahasiswa dari CSV
             List<Mahasiswa> mahasiswaList = csvHelper.readCSV();
             if (mahasiswaList.isEmpty()) {
                 throw new Exception("Data Mahasiswa kosong");
@@ -20,6 +21,7 @@ public class UpdateUseCase {
             System.out.print("Masukkan NIM mahasiswa yang ingin diupdate: ");
             String nimRequest = scanner.nextLine().trim();
 
+            // Cari mahasiswa berdasarkan NIM
             Mahasiswa m = null;
             for (Mahasiswa mahasiswa : mahasiswaList) {
                 if (mahasiswa.getNim().equals(nimRequest)) {
@@ -33,14 +35,15 @@ public class UpdateUseCase {
                 return;
             }
 
-            System.out.print("=== Mahasiswa "+ m.getNim() +" - " + m.getNama() + " berhasil ditemukan. ===\n");
+            System.out.print("=== Mahasiswa " + m.getNim() + " - " + m.getNama() + " berhasil ditemukan. ===\n");
             System.out.print("Masukkan IPK baru: ");
             double ipkBaru = Double.parseDouble(scanner.nextLine().trim());
 
+            // Update IPK di objek lalu simpan perubahan ke CSV
             m.updateIpk(ipkBaru);
             csvHelper.writeCSV(mahasiswaList);
 
-            System.out.println("Data " + m.getNama() +" berhasil diperbarui!\n");
+            System.out.println("Data " + m.getNama() + " berhasil diperbarui!\n");
             System.out.println("=== Data Mahasiswa ===");
             m.tampilkanInfo(true, false);
         } catch (Exception e) {

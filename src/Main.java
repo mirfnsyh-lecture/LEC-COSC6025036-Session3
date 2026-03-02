@@ -9,6 +9,7 @@ public class Main {
             Scanner input = new Scanner(System.in);
             boolean isRun = true;
 
+            // Loop tampilan menu sampai pengguna memilih keluar
             while (isRun) {
                 System.out.println("\n=== MAIN MENU ===");
                 System.out.println("1. Show Data Mahasiswa (Pembuatan Class dan Object)");
@@ -31,7 +32,6 @@ public class Main {
                     case 0:
                         isRun = false;
                         System.out.println("Graceful Shutdown ...");
-
                         break;
                     default:
                         System.out.println("Pilihan tidak valid. Silakan coba lagi.");
