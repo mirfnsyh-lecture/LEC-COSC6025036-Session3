@@ -18,6 +18,12 @@ public class Main {
                 System.out.println("0. Shutdown");
                 System.out.print("Pilih opsi (0-3): ");
 
+                if (!input.hasNextInt()) {
+                    System.out.println("Input harus berupa angka!\n");
+                    input.next();
+                    continue;
+                }
+
                 int selected = input.nextInt();
                 switch (selected) {
                     case 1:
